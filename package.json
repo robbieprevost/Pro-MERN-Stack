@@ -26,5 +26,9 @@
   "dependencies": {
     "express": "^4.15.3",
     "mongodb": "^2.2.29"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-react": "^6.24.1"
   }
 }
