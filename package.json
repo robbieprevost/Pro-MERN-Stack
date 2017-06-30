@@ -1,0 +1,30 @@
+{
+  "name": "pro-mern-stack",
+  "version": "1.0.0",
+  "description": "Getting more familiar with the MERN stack",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robbiep2/Pro-MERN-Stack.git"
+  },
+  "keywords": [
+    "MERN",
+    "React",
+    "Node",
+    "Mongo",
+    "Express"
+  ],
+  "author": "Robbie Prevost",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/robbiep2/Pro-MERN-Stack/issues"
+  },
+  "homepage": "https://github.com/robbiep2/Pro-MERN-Stack#readme",
+  "dependencies": {
+    "express": "^4.15.3",
+    "mongodb": "^2.2.29"
+  }
+}
