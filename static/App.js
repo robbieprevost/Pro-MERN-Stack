@@ -1,7 +1,13 @@
+'use strict';
+
 var contentNode = document.getElementById('contents');
+var continents = ['Africa', 'America', 'Asia', 'Australia', 'Europe'];
+var message = continents.map(function (c) {
+  return 'Hello ' + c + '!';
+}).join('');
 var component = React.createElement(
-  "h1",
-  { className: "red" },
-  "Hello World!"
-); // a simple JSX Component
+  'p',
+  null,
+  message
+); // A simple JSX component
 ReactDOM.render(component, contentNode); // render the component inside the content Node
