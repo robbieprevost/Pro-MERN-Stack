@@ -214,7 +214,7 @@ var IssueList = function (_React$Component5) {
         var _this5 = _possibleConstructorReturn(this, (IssueList.__proto__ || Object.getPrototypeOf(IssueList)).call(this));
 
         _this5.state = { issues: issues };
-
+        // create issue by timer
         setTimeout(_this5.createTestIssue.bind(_this5), 2000);
         return _this5;
     }
