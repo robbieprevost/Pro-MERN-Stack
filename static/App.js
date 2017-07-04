@@ -10,23 +10,26 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var contentNode = document.getElementById('contents');
 
-var issues = [{
-    id: 1,
-    status: 'Open',
-    owner: 'Ravan',
-    created: new Date('2016-08-15'),
-    effort: 5,
-    completionDate: undefined,
-    title: 'Error in console when clicking Add'
-}, {
-    id: 2,
-    status: 'Assigned',
-    owner: 'Eddie',
-    created: new Date('2016-08-16'),
-    effort: 14,
-    completionDate: new Date('2016-08-30'),
-    title: 'Missing bottom border on panel'
-}];
+// const issues = [
+//     {
+//         id:1,
+//         status:'Open',
+//         owner:'Ravan',
+//         created: new Date('2016-08-15'),
+//         effort: 5,
+//         completionDate: undefined,
+//         title: 'Error in console when clicking Add',
+//     },
+//     {
+//         id:2,
+//         status:'Assigned',
+//         owner:'Eddie',
+//         created: new Date('2016-08-16'),
+//         effort:14,
+//         completionDate:new Date('2016-08-30'),
+//         title:'Missing bottom border on panel'
+//     }
+// ];
 
 var IssueFilter = function (_React$Component) {
     _inherits(IssueFilter, _React$Component);
@@ -213,13 +216,29 @@ var IssueList = function (_React$Component5) {
 
         var _this5 = _possibleConstructorReturn(this, (IssueList.__proto__ || Object.getPrototypeOf(IssueList)).call(this));
 
-        _this5.state = { issues: issues };
-        // create issue by timer
-        setTimeout(_this5.createTestIssue.bind(_this5), 2000);
+        _this5.state = { issues: [] };
+
+        _this5.createTestIssue = _this5.createTestIssue().bind(_this5); // create new issue by timer
+        setTimeout(_this5.createTestIssue, 2000);
+
         return _this5;
     }
 
     _createClass(IssueList, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            this.loadData();
+        }
+    }, {
+        key: 'loadData',
+        value: function loadData() {
+            var _this6 = this;
+
+            setTimeout(function () {
+                _this6.setState({ issues: issues });
+            }, 500);
+        }
+    }, {
         key: 'createIssue',
         value: function createIssue(newIssue) {
             var newIssues = this.state.issues.slice();
@@ -251,6 +270,11 @@ var IssueList = function (_React$Component5) {
                 React.createElement(IssueFilter, null),
                 React.createElement('hr', null),
                 React.createElement(IssueTable, { issues: this.state.issues }),
+                React.createElement(
+                    'button',
+                    { onClick: this.createTestIssue },
+                    'Add'
+                ),
                 React.createElement('hr', null),
                 React.createElement(IssueAdd, null)
             );

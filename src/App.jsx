@@ -1,25 +1,25 @@
 const contentNode = document.getElementById('contents');
 
-const issues = [
-    {
-        id:1,
-        status:'Open',
-        owner:'Ravan',
-        created: new Date('2016-08-15'),
-        effort: 5,
-        completionDate: undefined,
-        title: 'Error in console when clicking Add',
-    },
-    {
-        id:2,
-        status:'Assigned',
-        owner:'Eddie',
-        created: new Date('2016-08-16'),
-        effort:14,
-        completionDate:new Date('2016-08-30'),
-        title:'Missing bottom border on panel'
-    }
-];
+// const issues = [
+//     {
+//         id:1,
+//         status:'Open',
+//         owner:'Ravan',
+//         created: new Date('2016-08-15'),
+//         effort: 5,
+//         completionDate: undefined,
+//         title: 'Error in console when clicking Add',
+//     },
+//     {
+//         id:2,
+//         status:'Assigned',
+//         owner:'Eddie',
+//         created: new Date('2016-08-16'),
+//         effort:14,
+//         completionDate:new Date('2016-08-30'),
+//         title:'Missing bottom border on panel'
+//     }
+// ];
 
 class IssueFilter extends React.Component {
     render() {
@@ -81,9 +81,21 @@ class IssueAdd extends React.Component {
 class IssueList extends React.Component {
     constructor() {
         super();
-        this.state = { issues: issues};
-        // create new issue by timer
-        setTimeout(this.createTestIssue.bind(this),2000);
+        this.state = { issues: []};
+
+        this.createTestIssue = this.createTestIssue().bind(this);        // create new issue by timer
+        setTimeout(this.createTestIssue,2000);
+
+    }
+
+    componentDidMount() {
+        this.loadData();
+    }
+
+    loadData() {
+        setTimeout(() => {
+            this.setState({issues: issues});
+        },500);
     }
 
     createIssue(newIssue){
@@ -111,6 +123,7 @@ class IssueList extends React.Component {
                 <IssueFilter />
                 <hr />
                 <IssueTable issues={this.state.issues}/>
+                <button onClick={this.createTestIssue}>Add</button>
                 <hr />
                 <IssueAdd />
             </div>
