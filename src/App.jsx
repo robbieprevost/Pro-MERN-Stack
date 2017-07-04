@@ -82,7 +82,7 @@ class IssueList extends React.Component {
     constructor() {
         super();
         this.state = { issues: issues};
-        // create issue by timer
+        // create new issue by timer
         setTimeout(this.createTestIssue.bind(this),2000);
     }
 
