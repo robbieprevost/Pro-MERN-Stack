@@ -10,27 +10,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var contentNode = document.getElementById('contents');
 
-// const issues = [
-//     {
-//         id:1,
-//         status:'Open',
-//         owner:'Ravan',
-//         created: new Date('2016-08-15'),
-//         effort: 5,
-//         completionDate: undefined,
-//         title: 'Error in console when clicking Add',
-//     },
-//     {
-//         id:2,
-//         status:'Assigned',
-//         owner:'Eddie',
-//         created: new Date('2016-08-16'),
-//         effort:14,
-//         completionDate:new Date('2016-08-30'),
-//         title:'Missing bottom border on panel'
-//     }
-// ];
-
 var IssueFilter = function (_React$Component) {
     _inherits(IssueFilter, _React$Component);
 
@@ -46,7 +25,7 @@ var IssueFilter = function (_React$Component) {
             return React.createElement(
                 'div',
                 null,
-                'This is a placeholder for the Issue Filter'
+                'This is a placeholder for the Issue Filter.'
             );
         }
     }]);
@@ -208,6 +187,16 @@ var IssueAdd = function (_React$Component4) {
     return IssueAdd;
 }(React.Component);
 
+var issues = [{
+    id: 1, status: 'Open', owner: 'Ravan',
+    created: new Date('2016-08-15'), effort: 5, completionDate: undefined,
+    title: 'Error in console when clicking Add'
+}, {
+    id: 2, status: 'Assigned', owner: 'Eddie',
+    created: new Date('2016-08-16'), effort: 14, completionDate: new Date('2016-08-30'),
+    title: 'Missing bottom border on panel'
+}];
+
 var IssueList = function (_React$Component5) {
     _inherits(IssueList, _React$Component5);
 
@@ -218,9 +207,8 @@ var IssueList = function (_React$Component5) {
 
         _this5.state = { issues: [] };
 
-        _this5.createTestIssue = _this5.createTestIssue().bind(_this5); // create new issue by timer
+        _this5.createTestIssue = _this5.createTestIssue.bind(_this5);
         setTimeout(_this5.createTestIssue, 2000);
-
         return _this5;
     }
 
@@ -250,9 +238,7 @@ var IssueList = function (_React$Component5) {
         key: 'createTestIssue',
         value: function createTestIssue() {
             this.createIssue({
-                status: 'New',
-                owner: 'Pieta',
-                created: new Date(),
+                status: 'New', owner: 'Pieta', created: new Date(),
                 title: 'Completion date should be optional'
             });
         }
@@ -284,4 +270,4 @@ var IssueList = function (_React$Component5) {
     return IssueList;
 }(React.Component);
 
-ReactDOM.render(React.createElement(IssueList, null), contentNode); // render the component in the content Node
+ReactDOM.render(React.createElement(IssueList, null), contentNode); // Render the component inside the content Node

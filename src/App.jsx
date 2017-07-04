@@ -1,30 +1,9 @@
 const contentNode = document.getElementById('contents');
 
-// const issues = [
-//     {
-//         id:1,
-//         status:'Open',
-//         owner:'Ravan',
-//         created: new Date('2016-08-15'),
-//         effort: 5,
-//         completionDate: undefined,
-//         title: 'Error in console when clicking Add',
-//     },
-//     {
-//         id:2,
-//         status:'Assigned',
-//         owner:'Eddie',
-//         created: new Date('2016-08-16'),
-//         effort:14,
-//         completionDate:new Date('2016-08-30'),
-//         title:'Missing bottom border on panel'
-//     }
-// ];
-
 class IssueFilter extends React.Component {
     render() {
         return (
-            <div>This is a placeholder for the Issue Filter</div>
+            <div>This is a placeholder for the Issue Filter.</div>
         )
     }
 }
@@ -32,7 +11,7 @@ class IssueFilter extends React.Component {
 class IssueRow extends React.Component {
     render() {
         const issue = this.props.issue;
-        return(
+        return (
             <tr>
                 <td>{issue.id}</td>
                 <td>{issue.status}</td>
@@ -48,7 +27,7 @@ class IssueRow extends React.Component {
 
 class IssueTable extends React.Component {
     render() {
-        const issueRows = this.props.issues.map(issue => <IssueRow key={issue.id} issue={issue}/>);
+        const issueRows = this.props.issues.map(issue => <IssueRow key={issue.id} issue={issue} />)
         return (
             <table className="bordered-table">
                 <thead>
@@ -62,9 +41,7 @@ class IssueTable extends React.Component {
                     <th>Title</th>
                 </tr>
                 </thead>
-                <tbody>
-                {issueRows}
-                </tbody>
+                <tbody>{issueRows}</tbody>
             </table>
         )
     }
@@ -78,14 +55,26 @@ class IssueAdd extends React.Component {
     }
 }
 
+const issues = [
+    {
+        id: 1, status: 'Open', owner: 'Ravan',
+        created: new Date('2016-08-15'), effort: 5, completionDate: undefined,
+        title: 'Error in console when clicking Add',
+    },
+    {
+        id: 2, status: 'Assigned', owner: 'Eddie',
+        created: new Date('2016-08-16'), effort: 14, completionDate: new Date('2016-08-30'),
+        title: 'Missing bottom border on panel',
+    },
+];
+
 class IssueList extends React.Component {
     constructor() {
         super();
-        this.state = { issues: []};
+        this.state = { issues: [] };
 
-        this.createTestIssue = this.createTestIssue().bind(this);        // create new issue by timer
-        setTimeout(this.createTestIssue,2000);
-
+        this.createTestIssue = this.createTestIssue.bind(this);
+        setTimeout(this.createTestIssue, 2000);
     }
 
     componentDidMount() {
@@ -94,35 +83,31 @@ class IssueList extends React.Component {
 
     loadData() {
         setTimeout(() => {
-            this.setState({issues: issues});
-        },500);
+            this.setState({ issues: issues });
+        }, 500);
     }
 
-    createIssue(newIssue){
+    createIssue(newIssue) {
         const newIssues = this.state.issues.slice();
         newIssue.id = this.state.issues.length + 1;
         newIssues.push(newIssue);
-        this.setState({ issues: newIssues});
+        this.setState({ issues: newIssues });
     }
 
     createTestIssue() {
-        this.createIssue(
-            {
-                status: 'New',
-                owner: 'Pieta',
-                created: new Date(),
-                title: 'Completion date should be optional'
-            }
-        );
+        this.createIssue({
+            status: 'New', owner: 'Pieta', created: new Date(),
+            title: 'Completion date should be optional',
+        });
     }
 
     render() {
-        return(
+        return (
             <div>
                 <h1>Issue Tracker</h1>
                 <IssueFilter />
                 <hr />
-                <IssueTable issues={this.state.issues}/>
+                <IssueTable issues={this.state.issues} />
                 <button onClick={this.createTestIssue}>Add</button>
                 <hr />
                 <IssueAdd />
@@ -131,4 +116,4 @@ class IssueList extends React.Component {
     }
 }
 
-ReactDOM.render(<IssueList/>, contentNode); // render the component in the content Node
+ReactDOM.render(<IssueList />, contentNode);    // Render the component inside the content Node
