@@ -1,18 +1,32 @@
+const webpack = require('webpack');
+const path = require('path');
+
 module.exports = {
-    entry: './src/App.jsx',
-    output: {
-        path:'/static',
-        filename: 'app.bundle.js'
+    entry: {
+        app: './src/App.jsx',
+        vendor:['react', 'react-dom', 'whatwg-fetch', 'babel-polyfill'],
     },
+    output: {
+        path: path.join(__dirname, './static'),
+        filename: "[name].bundle.js"
+    },
+    plugins: [
+        new webpack.optimize.CommonsChunkPlugin({
+            names: ["app",'vendor'],
+            minChunks: Infinity
+        })
+    ],
     module: {
-        loaders:[
+        rules:[
             {
-                test: /\.jsx/,
-                loader:'babel-loader',
-                query: {
-                    presets:['react','es2015']
+                test:/\.jsx$/,
+                use: {
+                    loader: 'babel-loader',
+                    query: {
+                        presets: ['react','es2015']
+                    }
                 }
-            }
+            },
         ]
-    }
+    },
 };
